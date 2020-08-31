@@ -61,7 +61,11 @@ app.delete("/api/notes/:trash", function(req, res){
         if(err) throw err
         const userInput = JSON.parse(data)
         console.log("hello")
-        userInput.splice(parseInt(req.params.trash) - 1, 1)
+        for (var i = 0; i < userInput.length; i++){
+            if (userInput[i].id == req.params.trash){
+                userInput.splice(i, 1)
+            }
+        }
         console.log(userInput)
     fs.writeFile(__dirname + "/db/db.json", JSON.stringify(userInput), function(err) {
         if (err) throw err
