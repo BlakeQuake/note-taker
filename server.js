@@ -2,7 +2,7 @@ const express = require("express");
 const fs = require("fs");
 const app = express();
 
-const PORT = 3300
+const PORT = process.env.PORT || 3300
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
